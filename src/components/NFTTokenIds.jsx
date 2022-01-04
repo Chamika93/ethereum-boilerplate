@@ -32,7 +32,7 @@ function NFTTokenIds({inputValue, setInputValue}) {
   const [isPending, setIsPending] = useState(false);
   const { verifyMetadata } = useVerifyMetadata();
   const { Moralis, chainId } = useMoralis();
-  const NFTCollections = getCollectionsByChain('0x1');
+  const NFTCollections = getCollectionsByChain('0x13881');
   const [nftToBuy, setnftToBuy] = useState();
 
 
@@ -118,10 +118,7 @@ function NFTTokenIds({inputValue, setInputValue}) {
                     </Tooltip>,
                     <Tooltip title="Transfer NFT">
                       <SendOutlined onClick={() => handleBuyClick(nft)} />
-                    </Tooltip>,
-                    <Tooltip title="Sell On OpenSea">
-                      <ShoppingCartOutlined onClick={() => alert("Add market place")} />
-                    </Tooltip>,
+                    </Tooltip>
                   ]}
                   style={{ width: 240, border: "2px solid #e7eaf3" }}
                   cover={
@@ -148,6 +145,16 @@ function NFTTokenIds({inputValue, setInputValue}) {
         onOk={() => alert('Bought this NFT')}
         okText="Buy"
       >
+        <img 
+          src={nftToBuy?.image} 
+          alt="nft to buy"
+          style={{
+            width:"250px",
+            margin: "auto",
+            borderRadius: "10px",
+            marginBottom: "15px"
+          }}  
+          />
       </Modal>
     </div>
   );

@@ -27,7 +27,7 @@ function NFTBalance() {
   const [visible, setVisibility] = useState(false);
   const [receiverToSend, setReceiver] = useState(null);
   const [amountToSend, setAmount] = useState(null);
-  const [nftToSend, setNftToSend] = useState(null);
+  const [nftToSell, setNftToSend] = useState(null);
   const [isPending, setIsPending] = useState(false);
   const { verifyMetadata } = useVerifyMetadata();
 
@@ -109,17 +109,22 @@ function NFTBalance() {
         </Skeleton>
       </div>
       <Modal
-        title={`Transfer ${nftToSend?.name || "NFT"}`}
+        title={`Buy ${nftToSell?.name || "NFT"}`}
         visible={visible}
         onCancel={() => setVisibility(false)}
-        onOk={() => transfer(nftToSend, amountToSend, receiverToSend)}
-        confirmLoading={isPending}
-        okText="Send"
+        onOk={() => alert('Bought this NFT')}
+        okText="Buy"
       >
-        <AddressInput autoFocus placeholder="Receiver" onChange={setReceiver} />
-        {nftToSend && nftToSend.contract_type === "erc1155" && (
-          <Input placeholder="amount to send" onChange={(e) => handleChange(e)} />
-        )}
+        <img 
+          src={nftToSell?.image} 
+          alt="nft to buy"
+          style={{
+            width:"250px",
+            margin: "auto",
+            borderRadius: "10px",
+            marginBottom: "15px"
+          }}  
+          />
       </Modal>
     </div>
   );
